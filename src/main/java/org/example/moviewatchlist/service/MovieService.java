@@ -70,6 +70,10 @@ public class MovieService {
         return toResponse(movie);
     }
 
+    public void deleteMovie(Long id){
+        Movie movie = getMovieEntityById(id);
+        movieRepository.delete(movie);
+    }
 
 
 
