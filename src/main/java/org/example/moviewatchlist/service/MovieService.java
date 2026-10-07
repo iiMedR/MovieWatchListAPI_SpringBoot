@@ -44,6 +44,10 @@ public class MovieService {
         return movieRepository.findAll().stream().map(this::toResponse).toList();
     }
 
+    public MovieResponse getMovieById(Long id){
+        Movie movie = getMovieEntityById(id);
+        return toResponse(movie);
+    }
 
 
 
