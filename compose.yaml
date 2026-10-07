@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: movielibrary_postgres
+
+    environment:
+      POSTGRES_DB: movielibrary
+      POSTGRES_USER: movielibrary
+      POSTGRES_PASSWORD: movielibrary
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - movielibrary-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  movielibrary-postgres-data:
