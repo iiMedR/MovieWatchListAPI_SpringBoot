@@ -49,6 +49,26 @@ public class MovieService {
         return toResponse(movie);
     }
 
+    @Transactional
+    public MovieResponse updateMovie(Long id, UpdateMovieRequest request){
+        Movie movie = getMovieEntityById(id);
+
+        movie.setTitle(request.title());
+        movie.setDirector(request.director());
+        movie.setReleaseYear(request.releaseYear());
+        movie.setGenre(request.genre());
+        movie.setWatched(request.watched());
+        if (!request.watched() && request.rating() != null) {
+            throw new IllegalArgumentException(
+                    "A movie cannot have a rating unless watched is true"
+            );
+        }else if (request.watched()) {
+            movie.setRating(request.rating());
+        }
+
+        movieRepository.save(movie);
+        return toResponse(movie);
+    }
 
 
 
