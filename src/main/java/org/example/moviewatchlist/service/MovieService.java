@@ -79,5 +79,8 @@ public class MovieService {
         return movieRepository.findByWatchedIsTrue().stream().map(this::toResponse).toList();
     }
 
+    public List<MovieResponse> getMoviesByGenre(String genre){
+        return movieRepository.findByGenreIgnoreCase(genre).stream().map(this::toResponse).toList();
+    }
 
 }

@@ -50,5 +50,9 @@ public class MovieController {
         return ResponseEntity.ok(movieService.getWatchedMovies());
     }
 
+    @GetMapping("/genre/{genre}")
+    public ResponseEntity<List<MovieResponse>> getGenreMovies(@PathVariable String genre){
+        return ResponseEntity.ok(movieService.getMoviesByGenre(genre));
+    }
 
 }
