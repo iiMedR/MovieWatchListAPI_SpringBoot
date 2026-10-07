@@ -24,6 +24,10 @@ public class MovieController {
         return movieService.createMovie(request);
     }
 
+    @GetMapping
+    public List<MovieResponse> getAllMovies(){
+        return movieService.getAllMovies();
+    }
 
 
 

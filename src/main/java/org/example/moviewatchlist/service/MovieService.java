@@ -40,6 +40,9 @@ public class MovieService {
         return movieRepository.findById(id).orElseThrow(() -> new MovieNotFoundException(id));
     }
 
+    public List<MovieResponse> getAllMovies(){
+        return movieRepository.findAll().stream().map(this::toResponse).toList();
+    }
 
 
 
