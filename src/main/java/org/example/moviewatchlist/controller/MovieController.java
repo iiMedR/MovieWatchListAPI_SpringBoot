@@ -19,6 +19,10 @@ public class MovieController {
         this.movieService = movieService;
     }
 
+    @PostMapping
+    public MovieResponse createMovie(@Valid @RequestBody CreateMovieRequest request){
+        return movieService.createMovie(request);
+    }
 
 
 

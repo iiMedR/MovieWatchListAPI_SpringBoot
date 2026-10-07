@@ -23,6 +23,18 @@ public class MovieService {
         return new MovieResponse(movie.getTitle(), movie.getDirector(), movie.getReleaseYear(), movie.getGenre(), movie.isWatched(), movie.getRating());
     }
 
+    public MovieResponse createMovie(CreateMovieRequest request){
+        Movie movie = new Movie();
+        movie.setTitle(request.title());
+        movie.setDirector(request.director());
+        movie.setReleaseYear(request.releaseYear());
+        movie.setGenre(request.genre());
+        movie.setWatched(false);
+        movie.setRating(0);
+
+        movieRepository.save(movie);
+        return toResponse(movie);
+    }
 
     private Movie getMovieEntityById(Long id){
         return movieRepository.findById(id).orElseThrow(() -> new MovieNotFoundException(id));
