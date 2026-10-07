@@ -75,6 +75,9 @@ public class MovieService {
         movieRepository.delete(movie);
     }
 
+    public List<MovieResponse> getWatchedMovies(){
+        return movieRepository.findByWatchedIsTrue().stream().map(this::toResponse).toList();
+    }
 
 
 }

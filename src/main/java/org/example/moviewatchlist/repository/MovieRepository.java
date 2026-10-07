@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
+    public List<Movie> findByWatchedIsTrue();
 
 }

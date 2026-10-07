@@ -45,6 +45,10 @@ public class MovieController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/watched")
+    public ResponseEntity<List<MovieResponse>> getWatchedMovies(){
+        return ResponseEntity.ok(movieService.getWatchedMovies());
+    }
 
 
 }
